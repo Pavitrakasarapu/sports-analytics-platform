@@ -16,3 +16,5 @@ python-dotenv==1.0.0
 werkzeug==2.3.7
 scipy==1.11.1 
 yt-dlp
+
+yt-dlp
