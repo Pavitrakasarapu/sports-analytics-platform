@@ -1,0 +1,10 @@
+.venv/
+.venv-py312-backup/
+venv/
+__pycache__/
+*/__pycache__/
+*.pyc
+uploads/*
+*.mp4
+.env
+.DS_Store
