@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["sh", "-c", "gunicorn --worker-class gthread --threads 4 --bind 0.0.0.0:${PORT:-8000} app:app"]
+CMD ["sh", "-c", "gunicorn --worker-class gthread --threads 4 --timeout 0 --bind 0.0.0.0:${PORT:-8000} app:app"]
