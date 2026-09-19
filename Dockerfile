@@ -8,7 +8,10 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY app.py .
+COPY templates ./templates
+COPY utils ./utils
+COPY sports ./sports 
 
 RUN pip install --no-cache-dir -r requirements.txt
 CMD ["sh", "-c", "gunicorn --worker-class gthread --threads 4 --timeout 0 --bind 0.0.0.0:${PORT:-8000} app:app"]
