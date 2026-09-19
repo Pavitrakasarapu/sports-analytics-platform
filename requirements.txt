@@ -18,3 +18,4 @@ scipy==1.11.1
 yt-dlp
 
 yt-dlp
+simple-websocket
