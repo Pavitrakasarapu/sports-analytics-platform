@@ -543,6 +543,12 @@ def list_sessions():
 @socketio.on("connect")
 def handle_connect():
     print(f"Client connected: {request.sid}", flush=True)
+
+    with state_lock:
+        for session_id, info in active_sessions.items():
+            if info.get("client_id") is None:
+                info["client_id"] = request.sid
+
     emit("connected", {"status": "connected"})
 
 
