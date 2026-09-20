@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-
+COPY requirements.txt .
 COPY app.py .
 COPY templates ./templates
 COPY utils ./utils
