@@ -333,6 +333,8 @@ def youtube_video():
     )
 
     try:
+        cookie_file = "/app/cookies/cookies.txt"
+
         ydl_opts = {
             "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
             "merge_output_format": "mp4",
@@ -343,6 +345,8 @@ def youtube_video():
             "no_warnings": True,
         }
 
+        if os.path.exists(cookie_file):
+            ydl_opts["cookiefile"] = cookie_file
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=True)
             downloaded_file = ydl.prepare_filename(info)
