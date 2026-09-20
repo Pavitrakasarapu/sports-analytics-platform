@@ -560,7 +560,9 @@ def handle_disconnect():
         ]
 
     for session_id in owned_sessions:
-        cleanup_session(session_id)
+        with state_lock:
+            if session_id in active_sessions:
+                active_sessions[session_id]["client_id"] = None
 
 
 # ---------------------------------------------------------------------------
