@@ -438,7 +438,17 @@
 
       socket.on("connected", (data) => {
         console.log("Connected:", data);
+
         loadSportCapabilities();
+
+        if (currentSessionId) {
+          socket.emit("start_upload_analysis", {
+          session_id: currentSessionId,
+          sport: currentSport || sportSelect.value || "soccer"
+        });
+
+        showStatus("Reconnected. Resuming analysis...", "info");
+      }
       });
 
       socket.on("sport_capabilities", (data) => {
